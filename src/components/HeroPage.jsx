@@ -359,19 +359,24 @@ function HeroPage({ canScroll, setCanScroll }) {
         id="animation"
         className="flex flex-col gap-44 items-center justify-center w-full"
       >
-        <div className="grid grid-cols-2 xl:grid-cols-[30vw_1fr] gap-40 w-full ">
-          <div
-            className={`flex ${
-              currentStage != "STAGE_3"
-                ? "items-start  h-fit"
-                : "items-center justify-center h-full"
-            } relative flex-col`}
-          >
+        <div className="grid sm:grid-cols-2 sm:xl:grid-cols-[30vw_1fr] sm:gap-40 gap-6 w-full">
+          {/* Mobile content */}
+          <div className="block sm:hidden">
+            <div className="text-[32px] leading-tight mb-6">
+              We are a tech-powered consumer insights agency, rooted in classical principles.
+            </div>
+            <p className="font-poppins text-lg">
+              Born from the heart to understand the mind, Equilibrium is a full-service consumer insights agency, committed to providing clients with agile insights through our proprietary AI-enhanced SaaS platform
+            </p>
+          </div>
+
+          {/* Desktop content */}
+          <div className="hidden sm:flex sm:items-start sm:relative sm:flex-col">
             {SCROLL_STAGES[currentStage].type === "image" ? (
               <img
                 src={SCROLL_STAGES[currentStage].src}
                 alt="101"
-                className=" object-contain stage-3-image opacity-0 w-full absolute"
+                className="object-contain stage-3-image opacity-0 w-full absolute"
               />
             ) : (
               <video
@@ -388,11 +393,11 @@ function HeroPage({ canScroll, setCanScroll }) {
               </video>
             )}
             {currentStage != "STAGE_3" && (
-              <div className="  left-0 w-full h-3 bg-secondary-cream absolute bottom-0"></div>
+              <div className="left-0 w-full h-3 bg-secondary-cream absolute bottom-0"></div>
             )}
           </div>
           <div
-            className={`flex flex-col gap-10 ${
+            className={`hidden sm:flex sm:flex-col sm:gap-10 ${
               showLogo ? "opacity-100" : "opacity-0"
             }`}
           >
@@ -548,9 +553,9 @@ function HeroPage({ canScroll, setCanScroll }) {
           </div>
         </div>
 
-        <div className="flex items-start gap-20 text-[40px]">
+        <div className="flex items-start justify-center gap-4 sm:gap-20 text-[24px] sm:text-[40px]">
           <div
-            className={`cursor-pointer `}
+            className={`cursor-pointer text-center`}
             onClick={() => {
               setActiveTab("SaaS Platform");
               scrollToSection("SaasSection");
@@ -559,11 +564,11 @@ function HeroPage({ canScroll, setCanScroll }) {
           >
             <h2>SaaS Platform</h2>
             {activeTab === "SaaS Platform" && (
-              <div className="h-[5px] bg-[#2ED89F]  w-full mt-2"></div>
+              <div className="h-[5px] bg-[#2ED89F] w-full mt-2"></div>
             )}
           </div>
           <div
-            className={`cursor-pointer `}
+            className={`cursor-pointer text-center`}
             onClick={() => {
               setActiveTab("Insights Agency");
               scrollToSection("InsightsSection");
@@ -572,7 +577,7 @@ function HeroPage({ canScroll, setCanScroll }) {
           >
             <h2>Insights Agency</h2>
             {activeTab === "Insights Agency" && (
-              <div className="h-[5px] bg-[#2ED89F]  w-full mt-2"></div>
+              <div className="h-[5px] bg-[#2ED89F] w-full mt-2"></div>
             )}
           </div>
         </div>

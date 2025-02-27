@@ -125,25 +125,24 @@ function SaaSSection() {
   return (
     <div
       id="SaasSection"
-      className="pt-32 pl-24 bg-primary-dark text-secondary-cream flex flex-col gap-14"
+      className="pt-8 sm:pt-32 px-6 sm:pl-24 bg-primary-dark text-secondary-cream flex flex-col gap-8 sm:gap-14"
     >
-      <div className="flex gap-14 items-stretch">
-        <img src="/Eq Final Logo-24.png" alt="Logo" className="w-[150px]" />
+      <div className="flex flex-col sm:flex-row gap-8 sm:gap-14 items-start sm:items-stretch">
+        <img src="/Eq Final Logo-24.png" alt="Logo" className="w-[100px] sm:w-[150px]" />
 
-        {/* <h2 className="text-[40px] mr-24 leading-tight">
-          One SaaS platform{" "}
-          <span
-            className={`text-primary-light  transition-all duration-300 ${
-              hasScrolledDown ? "opacity-100" : "opacity-0"
-            }`}
-          >
-            streamlining the entire primary research funnel
-          </span>{" "}
-          for transparency, quality, and agility to your marketing process
-        </h2> */}
-        <div className="flex flex-col text-[40px] leading-tight ease-in-out transition-all duration-500">
+        {/* Mobile heading */}
+        <div className="block sm:hidden text-[28px] leading-tight">
+          <div>One SaaS platform</div>
+          <div className={`text-primary-light transition-opacity duration-500 ${hasScrolledDown ? "opacity-100" : "opacity-0"}`}>
+            for transparent, high-quality, and agile insights,
+          </div>
+          <div>streamlining the entire primary research funnel</div>
+        </div>
+
+        {/* Desktop heading with animations */}
+        <div className="hidden sm:flex flex-col text-[40px] leading-tight ease-in-out transition-all duration-500">
           <div className="flex flex-row relative gap-2">
-            <div className={`whitespace-nowrap`}>One SaaS platform</div>
+            <div className="whitespace-nowrap">One SaaS platform</div>
             <div
               className={`text-primary-light transition-opacity duration-500 ${
                 hasScrolledDown ? "opacity-100 " : "opacity-0 absolute"
@@ -179,9 +178,10 @@ function SaaSSection() {
           </div>
         </div>
       </div>
-      <div className="flex items-center justify-between">
-        <div className="flex flex-col gap-16 w-[30%] font-poppins text-lg ">
-          <div className="flex flex-col gap-8 ">
+
+      <div className="flex flex-col sm:flex-row items-start sm:items-center sm:justify-between">
+        <div className="flex flex-col gap-8 sm:gap-16 w-full sm:w-[30%] font-poppins text-base sm:text-lg">
+          <div className="flex flex-col gap-6 sm:gap-8">
             <p className="tracking-wide">
               Designed to automate and simplify the research infrastructure,
               tools on the EQ platform act as tailwinds propelling the research
@@ -199,20 +199,22 @@ function SaaSSection() {
             target="_blank"
             className={`w-fit flex items-center gap-3 font-lexend  ${
               hasScrolledDown ? "opacity-100" : "opacity-0"
-            }`}
+            } transition-opacity duration-500`}
           >
-            <div className={`cursor-pointer `}>
-              <h2 className="font-medium whitespace-nowrap">
+            <div className={`cursor-pointer`}>
+              <h2 className="font-medium sm:whitespace-nowrap">
                 Click to visit SaaS platform
               </h2>
-              <div className="h-[1px] bg-secondary-cream  w-full"></div>
+              <div className="h-[1px] bg-secondary-cream w-full"></div>
             </div>
             <div className="bg-[#2ED89F] w-10 h-10 rounded-full flex items-center justify-center">
               <FiArrowRight className="text-primary-dark text-xl" />
             </div>
           </a>
         </div>
-        <div className="w-[60vw] h-[657px] relative overflow-hidden">
+
+        {/* Image section */}
+        <div className="hidden sm:block">
           {hasScrolledDown && (
             <img
               src={showImage ? "/saas-timeline.svg" : "/saasplat.gif"}

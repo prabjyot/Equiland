@@ -212,44 +212,56 @@ function InsightsSection() {
   }, [hasScrolledDown]);
   const blueRef= useRef(null)
   return (
-    <div id="InsightsSection" className="min-h-screen w-full pt-32 pb-12 px-24">
+    <div id="InsightsSection" className="min-h-screen w-full pt-8 sm:pt-32 pb-8 sm:pb-12 px-6 sm:px-24">
       {/* Heading and Paragraph */}
       <div>
-        <div className="flex flex-col text-[40px] leading-tight ease-in-out transition-all duration-500">
-          <div className="flex flex-row relative gap-2">
-            <div className={`whitespace-nowrap`}>
-              Industry-agnostic insighting services
-            </div>
-            <div
-              className={`text-primary-light transition-opacity duration-500 ${
-                hasScrolledDown ? "opacity-100 " : "opacity-0 absolute"
-              } whitespace-nowrap`}
-            >
-              designed for B2C, B2B, and
-            </div>{" "}
+        <div className="flex flex-col text-[28px] sm:text-[40px] leading-tight ease-in-out transition-all duration-500">
+          {/* Mobile heading */}
+          <div className="block sm:hidden">
+            <h1 className="mb-3">Industry-agnostic insighting services</h1>
+            <h1 className={`text-primary-light transition-opacity duration-500 ${hasScrolledDown ? "opacity-100" : "opacity-0"}`}>
+              designed for B2C, B2B, and D2C organisations
+            </h1>
+            <h1 className="mt-3">to demystify macro trends</h1>
           </div>
-          <div className="flex flex-row relative gap-2">
-            <div
-              ref={insightsAgencyRef}
-              className={`text-primary-light transition-opacity duration-500 ${
-                hasScrolledDown ? "opacity-100 " : "opacity-0 "
-              } whitespace-nowrap`}
-            >
-              D2C organisations
+
+          {/* Desktop heading with animations */}
+          <div className="hidden sm:block">
+            <div className="flex flex-row relative gap-2">
+              <div className="whitespace-nowrap">
+                Industry-agnostic insighting services
+              </div>
+              <div
+                className={`text-primary-light transition-opacity duration-500 ${
+                  hasScrolledDown ? "opacity-100 " : "opacity-0 absolute"
+                } whitespace-nowrap`}
+              >
+                designed for B2C, B2B, and
+              </div>
             </div>
-            <div
-              className={`transition-all duration-500 whitespace-nowrap ${
-                isAbsolute ? "absolute" : ""
-              } ${!hasScrolledDown ? "block left-0" : "inline-block"}`}
-              style={{
-                left: !hasScrolledDown ? 0 : `${insightsWidth}px`,
-              }}
-            >
-              to demystify macro trends
+            <div className="flex flex-row relative gap-2">
+              <div
+                ref={insightsAgencyRef}
+                className={`text-primary-light transition-opacity duration-500 ${
+                  hasScrolledDown ? "opacity-100 " : "opacity-0 "
+                } whitespace-nowrap`}
+              >
+                D2C organisations
+              </div>
+              <div
+                className={`transition-all duration-500 whitespace-nowrap ${
+                  isAbsolute ? "absolute" : ""
+                } ${!hasScrolledDown ? "block left-0" : "inline-block"}`}
+                style={{
+                  left: !hasScrolledDown ? 0 : `${insightsWidth}px`,
+                }}
+              >
+                to demystify macro trends
+              </div>
             </div>
           </div>
         </div>
-        <p className="font-poppins text-lg mt-5">
+        <p className="font-poppins text-base sm:text-lg mt-5">
           Rooted in classical business and research principles, we design every
           project with a blend of methodologies, but customize the approach to
           best-fit your unique business needs. A glimpse at the list of some of our
@@ -257,8 +269,32 @@ function InsightsSection() {
         </p>
       </div>
 
-      {/* Grid */}
-      <div className="grid grid-cols-4 mt-16 gap-7">
+      {/* Mobile view - Simple list of services */}
+      <div className="block sm:hidden mt-8">
+        <div className="flex flex-col gap-6">
+          {tabsData[activeTab].map((item, index) => (
+            <div key={index} className="p-4 bg-white/5 rounded-lg">
+              <h3 className="text-xl font-semibold mb-2">{item.heading}</h3>
+              <p className="text-sm text-gray-300">{item.text}</p>
+            </div>
+          ))}
+        </div>
+        {/* Simple mobile tabs */}
+        <div className="flex items-center justify-center gap-4 mt-8">
+          {Object.keys(tabsData).map((tab) => (
+            <div
+              key={tab}
+              onClick={() => setActiveTab(Number(tab))}
+              className={`h-2 w-2 rounded-full ${
+                activeTab === Number(tab) ? "bg-[#2ED89F]" : "bg-gray-300"
+              } cursor-pointer`}
+            ></div>
+          ))}
+        </div>
+      </div>
+
+      {/* Desktop Grid */}
+      <div className="hidden sm:grid grid-cols-4 mt-16 gap-7">
         {tabsData[activeTab].map((item, index) => (
           <SlidingSquare
             key={index}
@@ -272,8 +308,8 @@ function InsightsSection() {
         ))}
       </div>
 
-      {/* Tabs */}
-      <div className="flex items-center justify-center gap-10 text-[40px] mt-16">
+      {/* Desktop Tabs */}
+      <div className="hidden sm:flex items-center justify-center gap-10 text-[40px] mt-16">
         {Object.keys(tabsData).map((tab) => (
           <div
             key={tab}
