@@ -61,6 +61,7 @@ function Navbar({ canScroll, SetCanScroll }) {
   const navigate = useNavigate();
 
   const handleNavigation = (page, section) => {
+    setIsMenuOpen(false); // Close the mobile menu
     navigate(page); // Navigate to the page first
 
     // Wait a bit before scrolling to ensure the page loads

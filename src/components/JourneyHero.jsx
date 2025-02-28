@@ -162,12 +162,12 @@ function JourneyHero() {
   return (
     <div
       id="JourneyHero"
-      className="py-12 lg:py-28 px-5 lg:px-24 relative overflow-hidden"
+      className="py-6 sm:py-8 md:py-12 lg:py-28 px-4 sm:px-5 lg:px-24 relative overflow-hidden"
     >
       {/* heading */}
 
-      <div className="flex flex-col text-lg lg:text-[32px] xl:text-[40px] leading-tight ease-in-out transition-all duration-500">
-        <div className="flex flex-row relative gap-2">
+      <div style = {{lineHeight: '2.5rem'}} className="flex flex-col text-base sm:text-lg md:text-xl lg:text-[32px] xl:text-[40px] leading-tight ease-in-out transition-all duration-500">
+        <div className="flex flex-row relative gap-2" >
           <div className={`whitespace-nowrap`}>
             Change is the only constant truth,
           </div>
@@ -221,7 +221,7 @@ function JourneyHero() {
         </div>
       </div>
       {/* absolute svg */}
-      <div className="absolute left-0 right-0 top-48 md:top-8 lg:top-64 xl:top-[20vh] w-full h-[100vh] z-[10]">
+      <div className="hidden sm:block absolute left-0 right-0 top-48 md:top-8 lg:top-64 xl:top-[20vh] w-full h-[100vh] z-[10]">
         {hasScrolledDown && (
           <img
             src={showImage ? "/curveLines.svg" : "/ourjourney.gif"}
